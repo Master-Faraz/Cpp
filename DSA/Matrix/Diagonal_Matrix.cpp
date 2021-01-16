@@ -64,6 +64,12 @@ class Matrix
         }
     }
 
+    void release_Memory()
+    {
+        delete []A;
+        A=NULL;
+    }
+
 };
 
 int main()
@@ -72,6 +78,7 @@ int main()
 
     m.set_array();
     m.display();
+    m.release_Memory();      // Releases Dynamic memory
 
      return 0;
 }
