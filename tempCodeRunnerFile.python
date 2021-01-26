@@ -1,0 +1,4 @@
+n=10
+while n:
+    print("Please")
+    n-=1

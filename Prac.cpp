@@ -1,36 +1,18 @@
-#include <iostream>
-#include <cstdio>
+#include<iostream>
 using namespace std;
-
 int main()
 {
-    int a,b;
-    cin>>a>>b;
-    for(a;a<=b;a++)
-    {
-        if(a==1)
-            cout<<"one"<<endl;
-        else if(a==2)
-            cout<<"two"<<endl;
-        else if(a==3)
-            cout<<"three"<<endl;
-        else if(a==4)
-            cout<<"four"<<endl;
-        else if(a==5)
-            cout<<"five"<<endl;
-        else if(a==6)
-            cout<<"six"<<endl;
-        else if(a==7)
-            cout<<"seven"<<endl;
-        else if(a==8)
-            cout<<"eight"<<endl;
-        else if(a==9)
-            cout<<"nine"<<endl;
-        else if(a>9 && a%2==0)
-            cout<<"even"<<endl;
-        else if(a>9 && a%2==1)
-            cout<<"odd"<<endl;
-        
-    }   
-    return 0;
+  int A[5];
+  int *p=A;
+  cout<<"\nMemory allocation of Stack : "<<endl;
+  for(int i=0;i<5;i++)
+    cout<<p+i<<endl;
+
+
+    int *B=new int[5];
+    cout<<"\nMemory allocation of Heap : "<<endl;
+    for(int i=0;i<5;i++)
+        cout<<B+i<<endl;
+  
+  return 0;
 }
