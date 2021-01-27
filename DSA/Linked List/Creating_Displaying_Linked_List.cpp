@@ -136,15 +136,39 @@ int improved_search(struct Node *p, int key)
       p = p->next;
     }
   }
+  cout << "\n\n Error Key not found :";
+  return -101;
+}
+
+void insert(struct Node *p, int key, int index)
+{
+  Node *q = new Node; // Creating New node
+  q->data = key;
+
+  int count = 0;
+  while (p)
+  {
+    if (count == index - 1)
+    {
+      q->next = p->next;
+      p->next = q;
+      break;
+    }
+    else
+    {
+      count++;
+      p = p->next;
+    }
+  }
 }
 
 int main()
 {
-  int A[] = {1, 21, 300, 54, 50, 6, 07, 8};
+  int A[] = {1, 21, 30, 54};
 
-  create(A, 8);
+  create(A, 4);
 
-  cout << "\nSearch found at index : " << improved_search(first, 50) << endl;
+  insert(first, 100, 2);
   display(first);
 
   return 0;
