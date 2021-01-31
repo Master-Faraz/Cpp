@@ -34,14 +34,28 @@ void creating_using_insert_function(struct Node *p);
 
 void insert_last(int key);
 
+void insert_sorted(struct Node *p, int key);
+
+void del(int position);
+
+void duplocate(struct Node *p);
+
+void reversing(struct Node *p);
+
+void recursive_reversing(struct Node *p,struct Node *q);
+
 int main()
 {
+  insert_last(2);
+  insert_last(21);
+  insert_last(4);
+  insert_last(5);
 
-  insert_last(9999);
-  insert_last(100);
-  insert_last(200);
-  insert_last(300);
   cout << "\nElements are " << endl;
+  display(first);
+  
+  recursive_reversing(NULL,first);
+  cout << "\nAfter deletion Elements are " << endl;
   display(first);
 
   delete first;
@@ -243,4 +257,119 @@ void insert_last(int key)
     }
     temp->next = q;
   }
+}
+
+void insert_sorted(struct Node *p, int key)
+{
+  Node *q = new Node, *t;
+  q->data = key;
+  q->next = NULL;
+
+  if (first == NULL)
+  {
+    first = q;
+  }
+  else
+  {
+    while (p && p->data < key)
+    {
+      t = p;
+      p = p->next;
+    }
+    if (p == first) // Checking whether it is first node   -->  insert in LHS
+    {
+      q->next = first;
+      first = q;
+    }
+    else //  insetting between  t and p
+    {
+      q->next = t->next;
+      t->next = q;
+    }
+  }
+}
+
+void del(int position)
+{
+  Node *q = NULL;
+  Node *p = first;
+  if (position == 1)
+  {
+    q = first;
+    first = first->next;
+    delete p;
+  }
+  else
+  {
+    for (int i = 0; i < position - 1; i++)
+    {
+      q = p;
+      p = p->next;
+    }
+    q->next = p->next;
+    delete p;
+  }
+}
+
+void duplocate(struct Node *p)
+{
+  Node *q = first;
+  p = first->next;
+
+  while (p)
+  {
+    if (p->data != q->data)
+    {
+      q = p;
+      p = p->next;
+    }
+    else
+    {
+      q->next = p->next;
+      delete p;
+      p = q->next;
+    }
+  }
+}
+
+
+
+
+
+void reversing(struct Node *p)
+{
+  p=first;
+  Node *q=NULL;
+  Node *r=NULL;
+
+  while(p)
+  {
+    r=q;
+    q=p;
+    p=p->next;
+    q->next=r;
+  }
+  first=q;
+}
+
+
+
+
+
+
+
+void recursive_reversing(struct Node *q,struct Node *p)
+{  
+  if(p!=NULL)
+  {
+    recursive_reversing(p,p->next);
+    p->next=q;
+  }
+  else
+  {
+    first=q;
+  }
+  
+  
+
 }
