@@ -8,6 +8,47 @@ struct Node
 }
     *first = NULL; //  Global Pointer
 
+void create(int A[], int n);
+
+void display(struct Node *p);
+
+void Recursive_Display(struct Node *p);
+
+void Recursive_Reverse_Display(struct Node *p);
+
+int Count_nodes(struct Node *p);
+
+int Sum(struct Node *p);
+
+int Sum_Recursion(struct Node *p);
+
+int maximum(struct Node *p);
+
+int search(struct Node *p, int key);
+
+int improved_search(struct Node *p, int key);
+
+void insert(struct Node *p, int key, int index);
+
+void creating_using_insert_function(struct Node *p);
+
+void insert_last(int key);
+
+int main()
+{
+
+  insert_last(9999);
+  insert_last(100);
+  insert_last(200);
+  insert_last(300);
+  cout << "\nElements are " << endl;
+  display(first);
+
+  delete first;
+
+  return 0;
+}
+
 void create(int A[], int n) // Array and sizeof array
 {
   Node *t, *last;
@@ -137,6 +178,7 @@ int improved_search(struct Node *p, int key)
     }
   }
   cout << "\n\n Error Key not found :";
+  delete[] q;
   return -101;
 }
 
@@ -144,8 +186,13 @@ void insert(struct Node *p, int key, int index)
 {
   Node *q = new Node; // Creating New node
   q->data = key;
-
   int count = 0;
+
+  if (index == 0)
+  {
+    q->next = p;
+    first = q;
+  }
   while (p)
   {
     if (count == index - 1)
@@ -162,14 +209,38 @@ void insert(struct Node *p, int key, int index)
   }
 }
 
-int main()
+void creating_using_insert_function(struct Node *p)
 {
-  int A[] = {1, 21, 30, 54};
+  int size;
+  cout << "\nEnter size of Linked List you want to create : ";
+  cin >> size;
 
-  create(A, 4);
+  cout << "Enter " << size << " Elements \n\n";
+  for (int i = 0; i < size; i++)
+  {
+    int temp = 0;
+    cin >> temp;
+    insert(first, temp, i);
+  }
+}
 
-  insert(first, 100, 2);
-  display(first);
+void insert_last(int key)
+{
+  Node *q = new Node;
+  q->data = key;
+  q->next = NULL;
 
-  return 0;
+  Node *temp = first;
+  if (temp == NULL)
+  {
+    temp = first = q;
+  }
+  else
+  {
+    while (temp->next != NULL)
+    {
+      temp = temp->next;
+    }
+    temp->next = q;
+  }
 }
