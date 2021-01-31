@@ -6,9 +6,12 @@ struct Node
   int data;
   Node *next; // Pointer to next node
 }
-    *first = NULL; //  Global Pointer
+    *first = NULL,
+    *second = NULL, *third = NULL; //  Global Pointers
 
-void create(int A[], int n);
+void create1(int A[], int n);
+
+void create2(int A[], int n);
 
 void display(struct Node *p);
 
@@ -42,28 +45,31 @@ void duplocate(struct Node *p);
 
 void reversing(struct Node *p);
 
-void recursive_reversing(struct Node *p,struct Node *q);
+void recursive_reversing(struct Node *p, struct Node *q);
+
+void Merge_sorted(struct Node *p, struct Node *q);
+
+// *****_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*****
 
 int main()
 {
-  insert_last(2);
-  insert_last(21);
-  insert_last(4);
-  insert_last(5);
+  int A[] = {10, 20, 30, 40, 50}, B[] = {5, 15, 25, 35, 45, 55, 65};
 
-  cout << "\nElements are " << endl;
-  display(first);
-  
-  recursive_reversing(NULL,first);
-  cout << "\nAfter deletion Elements are " << endl;
-  display(first);
+  create1(A, 5);
+  create2(B, 7);
+
+  Merge_sorted(first, second);
+  display(third);
 
   delete first;
+  delete second;
 
   return 0;
 }
 
-void create(int A[], int n) // Array and sizeof array
+//   ***************************************************************************************************
+
+void create1(int A[], int n) // Array and sizeof array
 {
   Node *t, *last;
 
@@ -82,6 +88,29 @@ void create(int A[], int n) // Array and sizeof array
   }
 }
 
+//  *********************************************************************************
+
+void create2(int A[], int n) // Array and sizeof array
+{
+  Node *t, *last;
+
+  second = new Node;
+  second->data = A[0]; // Initializing first node
+  second->next = NULL;
+  last = second;
+
+  for (int i = 1; i < n; i++) // Initializing other nodes
+  {
+    t = new Node;
+    t->data = A[i];
+    t->next = NULL;
+    last->next = t;
+    last = t;
+  }
+}
+
+//    *************************************************************************************************
+
 void display(struct Node *p) // For Displaying linked list
 {
   while (p != NULL)
@@ -90,6 +119,8 @@ void display(struct Node *p) // For Displaying linked list
     p = p->next;
   }
 }
+
+//  *******************************************************************************************************
 
 void Recursive_Display(struct Node *p)
 {
@@ -100,6 +131,8 @@ void Recursive_Display(struct Node *p)
   }
 }
 
+//  *******************************************************************************************************
+
 void Recursive_Reverse_Display(struct Node *p)
 {
   if (p != NULL)
@@ -108,6 +141,8 @@ void Recursive_Reverse_Display(struct Node *p)
     cout << p->data << endl;
   }
 }
+
+//  *******************************************************************************************************
 
 int Count_nodes(struct Node *p)
 {
@@ -120,6 +155,8 @@ int Count_nodes(struct Node *p)
   return count;
 }
 
+//*******************************************************************************************************
+
 int Sum(struct Node *p)
 {
   int sum = 0;
@@ -131,6 +168,8 @@ int Sum(struct Node *p)
   return sum;
 }
 
+// *****************************************************************************************************
+
 int Sum_Recursion(struct Node *p) // It takes memory in stack
 {
   if (p == 0)
@@ -138,6 +177,8 @@ int Sum_Recursion(struct Node *p) // It takes memory in stack
   else
     return Sum_Recursion(p->next) + p->data;
 }
+
+//   *****************************************************************************************************
 
 int maximum(struct Node *p)
 {
@@ -155,6 +196,8 @@ int maximum(struct Node *p)
   return n;
 }
 
+//   *************************************************************************************************
+
 int search(struct Node *p, int key)
 {
   int count = 0;
@@ -168,6 +211,8 @@ int search(struct Node *p, int key)
   }
   return -101;
 }
+
+//  ****************************************************************************************************
 
 // When Key is found then move that link to first node  -->  Improved Search
 
@@ -196,6 +241,8 @@ int improved_search(struct Node *p, int key)
   return -101;
 }
 
+//     **************************************************************************************************
+
 void insert(struct Node *p, int key, int index)
 {
   Node *q = new Node; // Creating New node
@@ -223,6 +270,8 @@ void insert(struct Node *p, int key, int index)
   }
 }
 
+//    ****************************************************************************************************
+
 void creating_using_insert_function(struct Node *p)
 {
   int size;
@@ -237,6 +286,8 @@ void creating_using_insert_function(struct Node *p)
     insert(first, temp, i);
   }
 }
+
+//   *****************************************************************************************************
 
 void insert_last(int key)
 {
@@ -258,6 +309,8 @@ void insert_last(int key)
     temp->next = q;
   }
 }
+
+//   *****************************************************************************************************
 
 void insert_sorted(struct Node *p, int key)
 {
@@ -289,6 +342,8 @@ void insert_sorted(struct Node *p, int key)
   }
 }
 
+//    ****************************************************************************************************
+
 void del(int position)
 {
   Node *q = NULL;
@@ -311,6 +366,8 @@ void del(int position)
   }
 }
 
+//  ****************************************************************************************************
+
 void duplocate(struct Node *p)
 {
   Node *q = first;
@@ -332,44 +389,77 @@ void duplocate(struct Node *p)
   }
 }
 
-
-
-
+//   ****************************************************************************************************
 
 void reversing(struct Node *p)
 {
-  p=first;
-  Node *q=NULL;
-  Node *r=NULL;
+  p = first;
+  Node *q = NULL;
+  Node *r = NULL;
 
-  while(p)
+  while (p)
   {
-    r=q;
-    q=p;
-    p=p->next;
-    q->next=r;
+    r = q;
+    q = p;
+    p = p->next;
+    q->next = r;
   }
-  first=q;
+  first = q;
 }
 
+//   ***************************************************************************************************
 
-
-
-
-
-
-void recursive_reversing(struct Node *q,struct Node *p)
-{  
-  if(p!=NULL)
+void recursive_reversing(struct Node *q, struct Node *p)
+{
+  if (p != NULL)
   {
-    recursive_reversing(p,p->next);
-    p->next=q;
+    recursive_reversing(p, p->next);
+    p->next = q;
   }
   else
   {
-    first=q;
+    first = q;
   }
-  
-  
+}
 
+//   ***********************************************************************************************
+
+void Merge_sorted(struct Node *p, struct Node *q)
+{
+  Node *last;
+
+  if (p->data < q->data)
+  {
+    third = last = p;
+    p = p->next;
+    third->next = NULL;
+  }
+  else
+  {
+    third = last = q;
+    q = q->next;
+    third->next = NULL;
+  }
+
+  while (p && q)
+  {
+    if (p->data < q->data)
+    {
+      last->next = p;
+      last = p;
+      p = p->next;
+      last->next = NULL;
+    }
+    else
+    {
+      last->next = q;
+      last = q;
+      q = q->next;
+      last->next = NULL;
+    }
+  }
+  if (p)
+    last->next = p;
+  if (q)
+    last->next = q;
 }
