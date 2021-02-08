@@ -1,105 +1,68 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-struct Node
+int appearsNBy3(int arr[], int n)
 {
-  int data;
-  Node *next;
-} * first=NULL; // Global Pointer
+	int count1 = 0, count2 = 0;
+	int first=0, second=0 ;
 
-void create(int A[], int len) // Creating using array
-{
-  Node *last;
-  first = new Node;
+	for (int i = 0; i < n; i++) {
 
-  first->data = A[0];
-  first->next = NULL;
-  last = first;
+		// if this element is previously seen, 
+		// increment count1.
+		if (first == arr[i])
+			count1++;
 
-  for (int i = 1; i < len; i++)
-  {
-    Node *q = new Node;
-    q->data = A[i];
-    q->next = NULL;
-    last->next = q;
-    last = q;
-  }
-}
+		// if this element is previously seen, 
+		// increment count2.
+		else if (second == arr[i])
+			count2++;
+	
+		else if (count1 == 0) {
+			count1++;
+			first = arr[i];
+		}
 
-void display(struct Node *p)
-{
-  while (p)
-  {
-    cout << p->data << endl;
-    p = p->next;
-  }
-}
+		else if (count2 == 0) {
+			count2++;
+			second = arr[i];
+		}
 
-void reverse_display(struct Node *p)
-{
-  if (p != NULL)
-  {
-    reverse_display(p->next);
-    cout << p->data << endl;
-  }
-}
+		// if current element is different from
+		// both the previously seen variables, 
+		// decrement both the counts.
+		else {
+			count1--;
+			count2--;
+		}
+	}
 
-void insert(struct Node *p, int key, int index)
-{
-  Node *q = new Node;
-  q->data = key;
-  int count = 0;
+	count1 = 0;
+	count2 = 0;
 
-  if(index==0)
-  {
-    q->next=p;
-    first=q;
-  }
+	// Again traverse the array and find the
+	// actual counts.
+	for (int i = 0; i < n; i++) {
+		if (arr[i] == first)
+			count1++;
 
-  while (p)
-  {
-    if (count == index - 1)
-    {
-      q->next = p->next;
-      p->next = q;
-    }
-    count++;
-    p=p->next;
-  }
-}
+		else if (arr[i] == second)
+			count2++;
+	}
 
-void insert_last(int key)
-{
-  Node *q=new Node;
-  q->data=key;
-  q->next=NULL;
+	if (count1 > n / 3)
+		return first;
 
-  Node *temp=first;
-  if(temp==NULL)
-  {
-    temp=first=q;
-  }
-  else
-  {
-    while(temp->next!=NULL)
-    {
-      temp=temp->next;
-    }
-    temp->next=q;
-  }
-  
+	if (count2 > n / 3)
+		return second;
 
-
-  
+	return -1;
 }
 
 int main()
 {
-
-    insert_last(100);
-    insert_last(200);
-    insert_last(300);
-
-  display(first);
-  return 0;
+	int arr[] = { 1, 2, 3, 1, 1 ,1,2,2,3,4,5,2,2,2,2,2,4,2};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	cout << appearsNBy3(arr, n) << endl;
+	return 0;
 }
