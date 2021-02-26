@@ -12,6 +12,7 @@ void create(struct queue &q)
     q.front = q.rear = 0;
     cout << "Enter size of queue you want to create" << endl;
     cin >> q.size;
+    q.size=q.size+1;
 
     q.arr = new int[q.size];
 }
@@ -53,6 +54,7 @@ int dequeue(struct queue &q) //                       Deleting
         q.front = (q.front + 1) % q.size;
         x = q.arr[q.front];
     }
+    return x;
 }
 
 int main()
@@ -65,7 +67,7 @@ int main()
     enqueue(q, 4);
     enqueue(q, 5);
 
-    dequeue(q);
+    cout<<"Deleted value is "<<dequeue(q)<<endl;
     display(q);
     return 0;
 }
