@@ -8,11 +8,11 @@ struct Node
 };
 
 
-Node* Create() 
+Node * Create() 
 {
     int x;
     Node *t = new Node;
-    cout << "Enter data ( Enter -1 for no Node ) :  ";
+    cout << "Enter data ( Enter 0 for no Node ) :  ";
     cin >> x;
 
     if (x == 0)

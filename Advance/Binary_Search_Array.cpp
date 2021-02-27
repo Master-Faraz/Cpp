@@ -1,27 +1,26 @@
 #include<iostream>
 using namespace std;
+int Binary(int A[],int length,int key)
+{
+  int l=A[0];
+  int h=length;
+
+  while(l<=h)
+  {
+    int mid =((l+h)/2);
+
+    if(A[mid]==key &&(A[mid-1]!=key))    
+      return mid;
+    else if(A[mid]>key)
+      h=mid-1;
+    else
+      l=mid+1;
+  }
+  return -1;
+}
 int main()
 {
-  int A[10]={1,2,3,4,5,6,7,8,9,10},low=0,high=9,mid,n;     // low =0 and high =9 as we are getting index
-  cout<<"Enter a number you want to search : ";
-  cin>>n;
-
-  while(low<=high)                             // When number is not present in loop then loop will exit
-  {                                            // and code below is executed
-    mid=(low+high)/2;                  // Taking mid point of array
-    if(A[mid]==n)                                 // Comparing values not index
-    {
-      cout<<"Key is found at index : "<<mid<<endl;
-      return 0;                                // Return 0 to exit the loop when condition satisfies
-    }
-    else if (A[mid]>n)
-    {
-      high=mid-1;
-    }
-    else
-    {
-      low=mid+1;
-    }    
-  }
-  cout<<"Key is not inside array"<<endl;        // When number is not present in array
+  int A[]={0,1,2,3,4,4,4,4,5,5,5,6,7,8,9,10};
+  cout<<"Element found at index : "<<Binary(A,16,5)<<endl;
+  return 0;
 }
