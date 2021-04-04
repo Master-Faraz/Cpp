@@ -1,9 +1,14 @@
-  // // cout<<endl;
+  public:
+      int DD, MM, YY; //   Date of birth  in Date / Month / Year
 
-  // Derived d(5);
+      Nested(int DD, int MM, int YY)
+      {
+        this->DD = DD;
+        this->MM = MM;
+        this->YY = YY;
+      }
 
-  // // cout<<endl;
-
-  // Derived d(10,5);
-
-  // // cout<<endl;
+      void Date_Of_Birth(Nested n)
+      {
+        cout << n.DD << " / " << n.MM << " / " << n.YY << endl;
+      }
