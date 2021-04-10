@@ -1,20 +1,34 @@
 #include <iostream>
-#include <iomanip>
 using namespace std;
-float fun(float k1, float k2, float k3, float v)
-{
-    float factor, time;
-    factor = k1 * k2 * k3 * v;
-    time = (100 / factor);
-    cout << time << endl;
-}
-
 int main()
 {
-    //   float a=4.367;
-    //   cout<<fixed<<setprecision(1)<<a<<endl;
+    float n = 0;
+    cin >> n;
+    for (n; n != 0; n--)
+    {
+        float k1 = 0, k2 = 0, k3 = 0, v = 0, x = 0;
+        cin >> k1 >> k2 >> k3 >> v;
 
-    fun(1,1,0.9,10.44);
+        x = (100.00 / (k1 * k2 * k3 * v));
 
+        if (x < 9.575)
+            cout << "Yes" << endl;
+        else
+            cout << "No" << endl;
+    }
     return 0;
 }
+
+/*
+    In tet case 2 at 1 1 1 10.44  --> value is 9.578 -->9.58 --> world record is not broken
+    So we use 9.575 as increasing value after this round offs to 9.58 so 
+    the chef must score less than 9.575 to create world record
+
+    INPUT -->
+        Number of caes you want to test
+        value of variables and velocity
+
+ 
+
+
+ */
