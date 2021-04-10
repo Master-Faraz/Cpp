@@ -28,7 +28,4 @@ int main()
         Number of caes you want to test
         value of variables and velocity
 
- 
-
-
  */

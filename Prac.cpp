@@ -1,11 +1,12 @@
 #include<iostream>
+#include<string>
 using namespace std;
 int main()
 {
-  int a,b,c;
-  cin>>a>>b>>c;
-  cout<<a<<endl;
-  cout<<b<<endl;
-  cout<<c<<endl;
+  string s;
+  cin>>s;
+  for(int i=0;i<s.size();i++)
+    cout<<s[i]<<endl;
+  cout<<s.size()<<endl;
   return 0;
 }
