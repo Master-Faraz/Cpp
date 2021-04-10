@@ -7,32 +7,36 @@ int main()
     cin >> t;
     for (t; t != 0; t--)
     {
-        int n = 0, k = 0, sum = 0; // n = String Length
-        string s;                  // k = consecutive Stars *
+        int n = 0, k = 0, sum = 0, i = 0; // n = String Length
+        string s;                         // k = consecutive Stars *
+
         cin >> n >> k;
         cin >> s;
-        int i = 0;
+
         for (i; i < n; i++)
         {
-            if (s[i] == '*')
+
+            if (s[i] == '*') //                First it checks if * or not
             {
                 sum++;
-                if (sum == k)
+                if (sum == k) //           If number of stars we wanted == stars we found
                 {
                     cout << "Yes" << endl;
-                    break;
+                    break; //           Print and break the loop
                 }
             }
-            else
+
+            else //             If stars are not consecutive then sum =0 is assigned
             {
-                sum=0;
+                sum = 0;
             }
-            
         }
-        if (i == n)
+
+        if (i == n) //                 If we check the string and we didn't find consecutive *
         {
             cout << "No" << endl;
         }
     };
+
     return 0;
 }
