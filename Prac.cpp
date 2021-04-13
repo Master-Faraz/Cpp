@@ -1,12 +1,15 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <cmath>
 using namespace std;
 int main()
 {
-  string s;
-  cin>>s;
-  for(int i=0;i<s.size();i++)
-    cout<<s[i]<<endl;
-  cout<<s.size()<<endl;
-  return 0;
+
+  int t;
+  float n;
+  cin>>t;
+  while (t--)
+  {
+    cin >> n;
+    cout << remainder(n, 5) << endl;
+  }
 }
