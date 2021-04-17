@@ -7,7 +7,7 @@ int fun(int n)
     int count=0;
     while(n--)
     {
-        n=n/10;
+        n=n/10; 
         count++;
         
     }
