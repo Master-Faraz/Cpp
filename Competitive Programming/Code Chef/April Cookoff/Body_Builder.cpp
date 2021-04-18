@@ -2,9 +2,9 @@
 using namespace std;
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int temp;
+    cin >> temp;
+    while (temp--)
     {
         long long int n, r;
         cin >> n >> r;
