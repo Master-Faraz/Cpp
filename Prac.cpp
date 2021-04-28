@@ -1,15 +1,14 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 int main()
 {
 
-  int t;
-  float n;
+  int t ,a,b;
+  
   cin>>t;
   while (t--)
   {
-    cin >> n;
-    cout << remainder(n, 5) << endl;
+    cin >> a>>b;
+    cout << (a+b)<< endl;
   }
 }
