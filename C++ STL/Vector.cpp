@@ -107,6 +107,8 @@ int main()
 
     //  No use of writting " vector<int>::iterator itr "  or  " vector<int>::reverse_iterator itr "
     
+
+    
     for (auto itr = v.begin(); itr != v.end(); itr++)
         cout<<*itr<<endl;
         return 0;
