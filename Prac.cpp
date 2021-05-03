@@ -1,5 +1,5 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 using namespace std;
 int main()
 {
@@ -11,13 +11,14 @@ int main()
   v.push_back(50);
 
   vector<int>::iterator itr;
-  for(itr=v.begin();itr<v.end();itr++)
-    cout<<*itr<<endl;
+  for (itr = v.begin(); itr < v.end(); itr++)
+    cout << *itr << endl;
 
-    cout<<"\nWithout defining iterator \n"<<endl;
-  
-  for(auto it=v.begin();it!=v.end();it++)
-    cout<<*it<<endl;
+  cout << "\nWithout defining iterator \n"
+       << endl;
+
+  for (auto it = v.begin(); it != v.end(); it++)
+    cout << *it << endl;
 
   return 0;
 }
