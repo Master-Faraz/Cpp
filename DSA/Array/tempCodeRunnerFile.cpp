@@ -1,4 +1,0 @@
-    // ~Array()                     // Destructor
-    // {
-    //     delete []A;
-    // }
