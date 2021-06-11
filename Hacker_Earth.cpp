@@ -7,7 +7,9 @@ bool prime(int n)
   int sq;
   bool k = false;
   sq = sqrt(n);
+  
 
+  
   for (int i = 2; i <= sq; i++)
   {
     if (n % i == 0)
