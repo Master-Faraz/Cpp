@@ -5,9 +5,9 @@ int fibo(int a);                              // Function decleration
 
 int main()
 {
-  int n,i;
-  cout<<"Enter a number "<<endl;
-  cin>>n;
+  int n=5,i;
+  // cout<<"Enter a number "<<endl;
+  // cin>>n;
   for(i=1;i<=n;i++)
   {
   cout<<fibo(i)<<" ";
