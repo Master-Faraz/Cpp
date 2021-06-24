@@ -1,33 +1,26 @@
-// #include <iostream>
-// #include <vector>
-// using namespace std;
-// int main()
-// {
-//   vector<int> v;
-//   v.push_back(10);
-//   v.push_back(20);
-//   v.push_back(30);
-//   v.push_back(40);
-//   v.push_back(50);
-
-//   vector<int>::iterator itr;
-//   for (itr = v.begin(); itr < v.end(); itr++)
-//     cout << *itr << endl;
-
-//   cout << "\nWithout defining iterator \n"
-//        << endl;
-
-//   for (auto it = v.begin(); it != v.end(); it++)
-//     cout << *it << endl;
-
-//   return 0;
-// }
-
-#include <iostream>
+#include<iostream>
 using namespace std;
+
+int sum(int n)
+{
+  if(n==0)
+    return 1;
+  else
+    return (n+sum(n-1));
+}
+
+int power(int a,int b)
+{
+  if(b==1)
+    return a;
+  else
+    return (a*(power(a,b-1)));
+}
+
 int main()
 {
-  cout << ((0.1 + 0.2) == 0.3) << endl;
-  cout << (1==1) << endl;
+  int n=10;
+  // cout<<sum(n)<<endl;
+  cout<<power(2,0)<<endl;
   return 0;
 }
