@@ -79,9 +79,12 @@ int main()
     //                  *****       Capacity() , Reserve()      *****
 
     vector<int> a(10);
+    
     cout << a.size();             //                   Size is always <= capacity
     cout << sizeof(a) << endl;    //                  Size taken in memory
     cout << a.capacity() << endl; //                  total Capacity
+
+
     a.reserve(20);                //                  Increase Capacity
     cout << "After reserving 20 spaces capacity becomes : " << a.capacity() << endl;
 
