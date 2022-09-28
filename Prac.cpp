@@ -2,15 +2,17 @@
 using namespace std;
 int main()
 {
-  long long int t;
+  long long int t=1;
 
-  cin >> t;
+  // cin >> t;
 
   while (t--)
   {
     long long int d, D, P, Q;
 
-    cin >> D >> d >> P >> Q;
+    // cin >> D >> d >> P >> Q;
+
+    cout<<"Hello world";
 
   
 
